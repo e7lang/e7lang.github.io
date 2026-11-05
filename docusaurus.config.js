@@ -20,7 +20,8 @@ const config = {
   i18n: { defaultLocale: "en", locales: ["en"] },
   headTags: [
     { tagName: "link", attributes: { rel: "apple-touch-icon", href: "/img/apple-touch-icon.png" } },
-    { tagName: "meta", attributes: { name: "theme-color", content: "#0e1015" } },
+    { tagName: "meta", attributes: { name: "theme-color", media: "(prefers-color-scheme: light)", content: "#ffffff" } },
+    { tagName: "meta", attributes: { name: "theme-color", media: "(prefers-color-scheme: dark)", content: "#0e1015" } },
   ],
   stylesheets: [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap",
@@ -60,7 +61,7 @@ const config = {
         ],
       },
       footer: {
-        style: "dark",
+        style: "light",
         links: [
           {
             title: "Learn",

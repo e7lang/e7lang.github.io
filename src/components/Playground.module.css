@@ -31,18 +31,23 @@
 .editor :global(.cm-editor) { height: 100%; font-size: 14px; }
 .editor :global(.cm-scroller) { font-family: var(--ifm-font-family-monospace); line-height: 1.6; font-variant-ligatures: none; }
 
-.output { display: flex; flex-direction: column; border-left: 1px solid var(--ifm-toc-border-color); background: #12141a; }
-.tabs { display: flex; gap: 2px; padding: 6px 10px 0; background: #0e1015; border-bottom: 1px solid #262a33; }
+.output { display: flex; flex-direction: column; border-left: 1px solid var(--ifm-toc-border-color); background: var(--e7-code-bg); }
+.tabs { display: flex; gap: 2px; padding: 6px 10px 0; background: var(--e7-code-bar); border-bottom: 1px solid var(--e7-line); }
 .tab, .tabOn {
-  border: 0; background: transparent; color: #94a3b8; padding: 7px 14px; font-size: 13.5px; font-weight: 600; cursor: pointer;
+  border: 0; background: transparent; color: var(--e7-subtle); padding: 7px 14px; font-size: 13.5px; font-weight: 600; cursor: pointer;
   border-bottom: 2px solid transparent; font-family: inherit;
 }
-.tabOn { color: #e5e7eb; border-bottom-color: var(--e7-accent); }
+.tabOn { color: var(--e7-fg); border-bottom-color: var(--e7-accent); }
 .console {
-  flex: 1; margin: 0; border-radius: 0; background: transparent; color: #e6edf3; padding: 14px 18px; overflow: auto;
+  flex: 1; margin: 0; border-radius: 0; background: transparent; color: var(--e7-code-fg); padding: 14px 18px; overflow: auto;
   font: 13.4px/1.6 var(--ifm-font-family-monospace); white-space: pre-wrap; word-break: break-word;
 }
-.result { color: #7dd3fc; }
-.err { color: #fca5a5; }
-.hint { color: #64748b; }
+.result { color: var(--e7-tok-function); }
+.err { color: #dc2626; }
+html[data-theme="dark"] .err { color: #fca5a5; }
+.hint { color: var(--e7-subtle); }
 .footnote { font-size: 12.5px; color: var(--ifm-color-emphasis-600); padding: 6px 16px; border-top: 1px solid var(--ifm-toc-border-color); }
+/* editor surfaces follow the site palette in both themes */
+.editor :global(.cm-editor), .editor :global(.cm-gutters) { background-color: var(--e7-code-bg) !important; }
+.editor :global(.cm-gutters) { border-right: 1px solid var(--e7-line) !important; color: var(--e7-subtle) !important; }
+.editor :global(.cm-activeLine), .editor :global(.cm-activeLineGutter) { background-color: var(--e7-accent-soft) !important; }

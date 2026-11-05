@@ -1,24 +1,74 @@
 /* E7 brand: ink + one accent (signal orange). No gradients. */
 :root {
+  /* Brand: warm neutrals + one accent (signal orange). Every color below has a light and a dark value,
+     so the whole site follows the selected theme (default: the visitor's system setting). */
   --e7-ink: #14161c;
-  --e7-ink-2: #1b1e26;
-  --e7-accent: #ff6a2b;          /* fills: buttons, logo, markers */
+  --e7-accent: #ff6a2b;              /* fills: buttons, logo, markers (text on it is --e7-ink) */
   --e7-accent-hover: #ff8250;
-  --e7-accent-soft: rgba(255, 106, 43, .12);
-  --ifm-color-primary: #c2410c;  /* text/links on light backgrounds (AA contrast) */
+  --e7-accent-text: #e2520a;         /* large accent text (headline) */
+  --e7-accent-soft: rgba(255, 106, 43, .10);
+  --e7-hero-bg: #faf9f7;
+  --e7-dot: rgba(20, 22, 28, .085);
+  --e7-fg: #14161c;
+  --e7-muted: #565c68;
+  --e7-subtle: #7a808c;
+  --e7-line: #e6e4df;
+  --e7-chip-bg: #ffffff;
+  --e7-shadow: 0 1px 2px rgba(20, 22, 28, .04), 0 12px 32px rgba(20, 22, 28, .06);
+  /* code */
+  --e7-code-bg: #ffffff;
+  --e7-code-bar: #f6f5f2;
+  --e7-code-fg: #1f2329;
+  --e7-tok-keyword: #c2410c;
+  --e7-tok-string: #2f7d32;
+  --e7-tok-comment: #8a8f98;
+  --e7-tok-function: #1d4ed8;
+  --e7-tok-type: #a15c07;
+  --e7-tok-number: #7c3aed;
+  --e7-tok-punct: #565c68;
+
+  --ifm-color-primary: #c2410c;      /* links on light backgrounds (AA contrast) */
   --ifm-color-primary-dark: #af3b0b;
   --ifm-color-primary-darker: #a5370a;
   --ifm-color-primary-darkest: #882d08;
   --ifm-color-primary-light: #d5470d;
   --ifm-color-primary-lighter: #dd4a0e;
   --ifm-color-primary-lightest: #f0581c;
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #faf9f7;
+  --ifm-toc-border-color: var(--e7-line);
+  --ifm-color-emphasis-300: #dcd9d3;
+  --ifm-font-color-base: #1f2329;
+  --ifm-heading-color: #14161c;
+  --ifm-footer-background-color: #faf9f7;
   --ifm-font-family-base: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --ifm-code-font-size: 92%;
   --ifm-navbar-shadow: none;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 106, 43, .10);
 }
 html[data-theme="dark"] {
+  --e7-accent-text: #ff7a3d;
+  --e7-accent-soft: rgba(255, 122, 61, .14);
+  --e7-hero-bg: #0e1015;
+  --e7-dot: rgba(255, 255, 255, .07);
+  --e7-fg: #f3f4f6;
+  --e7-muted: #a7adb8;
+  --e7-subtle: #7d8390;
+  --e7-line: #262a33;
+  --e7-chip-bg: rgba(255, 255, 255, .03);
+  --e7-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px rgba(0, 0, 0, .35);
+  --e7-code-bg: #14161c;
+  --e7-code-bar: #0f1116;
+  --e7-code-fg: #d4d7de;
+  --e7-tok-keyword: #ff8a57;
+  --e7-tok-string: #a6d189;
+  --e7-tok-comment: #6b7280;
+  --e7-tok-function: #8ab4f8;
+  --e7-tok-type: #e5c07b;
+  --e7-tok-number: #c4a7ff;
+  --e7-tok-punct: #9aa1ad;
+
   --ifm-color-primary: #ff7a3d;
   --ifm-color-primary-dark: #ff671f;
   --ifm-color-primary-darker: #ff5d10;
@@ -28,12 +78,30 @@ html[data-theme="dark"] {
   --ifm-color-primary-lightest: #ffb393;
   --ifm-background-color: #0e1015;
   --ifm-background-surface-color: #14161c;
+  --ifm-color-emphasis-300: #3a3f4b;
+  --ifm-font-color-base: #e5e7eb;
+  --ifm-heading-color: #f3f4f6;
+  --ifm-footer-background-color: #0b0d11;
   --ifm-navbar-background-color: rgba(14, 16, 21, 0.85);
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 122, 61, .14);
 }
 .navbar { border-bottom: 1px solid var(--ifm-toc-border-color); backdrop-filter: saturate(180%) blur(12px); }
 .navbar__title { font-weight: 800; letter-spacing: -0.01em; }
-.footer--dark { background: #0e1015; }
+.footer { border-top: 1px solid var(--e7-line); }
+.navbar { background-color: color-mix(in srgb, var(--ifm-background-color) 85%, transparent); }
+
+/* One code palette for the whole site (docs, homepage), in both themes. */
+.prism-code { background: var(--e7-code-bg) !important; color: var(--e7-code-fg) !important; }
+.theme-code-block { border: 1px solid var(--e7-line); box-shadow: none !important; }
+.prism-code .token-line, .prism-code .token.plain { color: var(--e7-code-fg) !important; }
+.prism-code .token { font-style: normal !important; }
+.prism-code .token.keyword, .prism-code .token.boolean, .prism-code .token.null { color: var(--e7-tok-keyword) !important; }
+.prism-code .token.string, .prism-code .token.template-string, .prism-code .token.char, .prism-code .token.attr-value { color: var(--e7-tok-string) !important; }
+.prism-code .token.comment, .prism-code .token.prolog { color: var(--e7-tok-comment) !important; font-style: italic !important; }
+.prism-code .token.function, .prism-code .token.method { color: var(--e7-tok-function) !important; }
+.prism-code .token.class-name, .prism-code .token.builtin, .prism-code .token.maybe-class-name, .prism-code .token.tag { color: var(--e7-tok-type) !important; }
+.prism-code .token.number, .prism-code .token.constant { color: var(--e7-tok-number) !important; }
+.prism-code .token.punctuation, .prism-code .token.operator { color: var(--e7-tok-punct) !important; }
 .markdown h1 { font-weight: 800; letter-spacing: -0.02em; }
 .markdown table { display: table; width: 100%; }
 @media (max-width: 760px) { .markdown table { display: block; } }
