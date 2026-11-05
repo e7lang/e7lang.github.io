@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Language tour
-description: The E7 language in ten minutes - types, classes, integers, typed JSON and crypto.
+description: The E7 language in ten minutes - types, classes, generics, integers, typed JSON and crypto.
 ---
 
 # Language tour
@@ -51,6 +51,43 @@ classes with single inheritance, `super`, static members and parameter propertie
 destructuring, spread, `?.`, `??`/`??=`, `switch`, labeled `break`/`continue`, multi-file
 `import`/`export`, and narrowing on `=== null`, truthiness and `instanceof`.
 
+## Generics and classes
+
+Generic functions, classes, interfaces and type aliases work as in TypeScript; each type argument
+list is compiled to its own code, so they cost nothing at run time. Classes have getters and
+setters, `abstract` members, `#private` fields and methods, and `static {}` blocks:
+
+```ts
+interface Result<T> { ok: boolean; value: T | null; error: string }
+
+function attempt<T>(f: () => T): Result<T> {
+  try {
+    return { ok: true, value: f(), error: "" };
+  } catch (e) {
+    return { ok: false, value: null, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+abstract class Account {
+  #balance = 0;
+  get balance(): number { return this.#balance; }
+  deposit(n: number): number {
+    if (n <= 0) throw new RangeError("amount must be positive");
+    this.#balance += n;
+    return this.#balance;
+  }
+  abstract kind(): string;
+}
+class Savings extends Account {
+  kind(): string { return "savings"; }
+}
+
+const acct = new Savings();
+const [first, ...others] = [attempt(() => acct.deposit(50)), attempt(() => acct.deposit(-1))];
+console.log(acct.kind(), acct.balance, first.ok, others[0].error);
+// savings 50 true amount must be positive
+```
+
 ## Numbers behave like JavaScript
 
 `number` is an IEEE-754 double with exactly JavaScript's semantics, including printing:
@@ -97,7 +134,7 @@ const bad = JSON.parse('{"orderId":"A1","amount":"12.5","items":[]}') as Payment
 
 ## Errors
 
-`try`/`catch` catches the errors that Node.js also throws: your own `throw new Error(...)`,
+`try`/`catch`/`finally` handle the errors that Node.js also throws: your own `throw new Error(...)`,
 `JSON.parse` syntax errors, and standard-library `RangeError`s, `TypeError`s and `URIError`s.
 The caught value is `unknown`, so narrow it before reading `.message`:
 

@@ -36,8 +36,7 @@ unchanged, and differential tests check that e7vm prints exactly what Node.js pr
 
 Ordinary TypeScript: `let`/`const`, functions and closures, arrow functions, classes with single
 inheritance (getters and setters, `abstract`, `#private`), interfaces, enums, generics, destructuring
-with defaults and rest, spread, template
-strings, optional chaining, `??`, `for…of`, `Map`, `Set`, `Uint8Array`, `bigint`, `JSON`,
+with defaults and rest, spread, template strings, optional chaining, `??`, `for…of`, `Map`, `Set`, `Uint8Array`, `bigint`, `JSON`,
 `Date`, `Math`, and the `e7:crypto` / `e7:encoding` modules. Fixed-width integers (`i8` … `u64`)
 are there when an algorithm needs machine arithmetic.
 

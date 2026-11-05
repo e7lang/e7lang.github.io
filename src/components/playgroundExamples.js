@@ -38,6 +38,12 @@ export default [
     "expect": 0
   },
   {
+    "id": "generics",
+    "title": "Generics and classes",
+    "code": "// Generic functions, classes, interfaces and aliases (compiled per type argument list),\n// getters, abstract members, #private fields and try/catch.\ninterface Result<T> { ok: boolean; value: T | null; error: string }\n\nfunction attempt<T>(f: () => T): Result<T> {\n  try {\n    return { ok: true, value: f(), error: \"\" };\n  } catch (e) {\n    return { ok: false, value: null, error: e instanceof Error ? e.message : String(e) };\n  }\n}\n\nabstract class Account {\n  #balance = 0;\n  get balance(): number { return this.#balance; }\n  deposit(n: number): number {\n    if (n <= 0) throw new RangeError(\"amount must be positive\");\n    this.#balance += n;\n    return this.#balance;\n  }\n  abstract kind(): string;\n}\nclass Savings extends Account {\n  kind(): string { return \"savings\"; }\n}\n\nconst acct = new Savings();\nconst [first, ...others] = [attempt(() => acct.deposit(50)), attempt(() => acct.deposit(-1))];\nconsole.log(acct.kind(), acct.balance, first.ok, others[0].error);\n",
+    "expect": 0
+  },
+  {
     "id": "integers",
     "title": "Numbers, integers, bigint",
     "code": "// number is an IEEE-754 double, exactly like JavaScript.\nconsole.log(0.1 + 0.2, 2 ** 53 + 1, 7 / 2);\n\n// Fixed-width integers are opt-in and wrap like machine integers.\nfunction fnv1a(data: Uint8Array): u32 {\n  let h: u32 = 0x811c9dc5;\n  for (const b of data) {\n    h ^= u32(b);\n    h *= 16777619;          // wraps modulo 2^32\n  }\n  return h;\n}\nconsole.log(fnv1a(new TextEncoder().encode(\"hello\")).toString(16));\nconsole.log(rotl32(u32(1), 31), clz32(u32(1)));\n\nconst big: u64 = 0xffffffffffffffff;\nconsole.log(big, big + 1);   // wraps to 0\n\n// bigint for arbitrary precision\nlet f = 1n;\nfor (let i = 1n; i <= 30n; i++) f *= i;\nconsole.log(\"30! =\", f.toString());\n",
