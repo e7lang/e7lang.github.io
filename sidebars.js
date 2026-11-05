@@ -15,6 +15,7 @@ module.exports = {
         "reference/SPEC",
         "reference/stdlib",
         "reference/EMBEDDING",
+        "reference/DEBUGGING",
         "reference/BYTECODE",
         "reference/DESIGN",
         "reference/PRODUCTION",
