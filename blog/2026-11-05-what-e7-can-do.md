@@ -61,7 +61,7 @@ export function handle(body: string): string {
 | TypeScript | E7 |
 |---|---|
 | `any`, `unknown` | a concrete type or `T \| null` |
-| `try` / `catch` | return errors as values (`T \| null` or a result object); `throw` ends the call and cannot be caught in the script |
+| `try` / `catch` | in 0.1, return errors as values (`T \| null` or a result object). Since [0.2](/blog/e7-0-2), `try`/`catch` catches the errors Node.js also throws; `finally` is not supported yet |
 | user-defined generics `f<T>()` | concrete types (built-in `Array<T>`, `Map<K, V>`, `Set<T>` are fine) |
 | unions such as `string \| number` | one interface with a `kind` field; only unions with `null` / `undefined` are allowed |
 | regular expressions | string methods: `split`, `indexOf`, `slice`, `replaceAll` |
