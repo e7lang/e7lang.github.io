@@ -8,3 +8,5 @@ static/playground/e7wasm.js
 static/playground/e7wasm.wasm
 static/img/architecture-light.png
 static/img/architecture-dark.png
+static/llms.txt
+static/llms-full.txt
