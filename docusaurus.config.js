@@ -38,7 +38,15 @@ const config = {
               ? `https://github.com/e7lang/e7/edit/main/docs/${docPath.slice("reference/".length)}`
               : `https://github.com/e7lang/e7lang.github.io/edit/main/docs/${docPath}`,
         },
-        blog: false,
+        blog: {
+          blogTitle: "E7 blog",
+          blogDescription: "News and notes from the E7 and e7vm project",
+          showReadingTime: true,
+          blogSidebarTitle: "Recent posts",
+          feedOptions: { type: "all", title: "E7 blog", copyright: "E7 and e7vm are open source under the MIT license." },
+          onInlineAuthors: "throw",
+          onUntruncatedBlogPosts: "throw",
+        },
         theme: { customCss: require.resolve("./src/css/custom.css") },
       }),
     ],
@@ -56,6 +64,7 @@ const config = {
           { to: "/docs/getting-started", label: "Get started", position: "left" },
           { to: "/playground", label: "Playground", position: "left" },
           { to: "/docs/reference/SPEC", label: "Spec", position: "left" },
+          { to: "/blog", label: "Blog", position: "left" },
           { href: "https://github.com/e7lang/e7/releases", label: "Download", position: "right" },
           { href: "https://github.com/e7lang/e7", label: "GitHub", position: "right" },
         ],
@@ -85,6 +94,7 @@ const config = {
           {
             title: "Project",
             items: [
+              { label: "Blog", to: "/blog" },
               { label: "GitHub", href: "https://github.com/e7lang/e7" },
               { label: "Releases", href: "https://github.com/e7lang/e7/releases" },
               { label: "Issues", href: "https://github.com/e7lang/e7/issues" },
