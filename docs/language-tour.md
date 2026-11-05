@@ -163,7 +163,7 @@ bytes ever entering script memory. See the [embedding guide](reference/EMBEDDING
 
 ## What is not supported
 
-`any`, `eval`, `finally`, `async`/`await`, generators, `for…in`, user-defined generics,
-index signatures (use `Map<K, V>`), getters/setters, `#private`, and dynamic property access
-on objects. Each one is rejected at compile time with a clear message. The
+`any`, `unknown`, `eval`, union types other than `T | null | undefined`, `async`/`await`,
+generators, `for…in`, regular expressions, index signatures and `Record` (use `Map<K, V>`), and
+dynamic property access on objects. Each one is rejected at compile time with a clear message. The
 [language spec](reference/SPEC.md) has the complete list.

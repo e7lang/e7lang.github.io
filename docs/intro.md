@@ -35,14 +35,15 @@ unchanged, and differential tests check that e7vm prints exactly what Node.js pr
 ## What can I write?
 
 Ordinary TypeScript: `let`/`const`, functions and closures, arrow functions, classes with single
-inheritance, interfaces, enums, generics on built-in containers, destructuring, spread, template
+inheritance (getters and setters, `abstract`, `#private`), interfaces, enums, generics, destructuring
+with defaults and rest, spread, template
 strings, optional chaining, `??`, `for…of`, `Map`, `Set`, `Uint8Array`, `bigint`, `JSON`,
 `Date`, `Math`, and the `e7:crypto` / `e7:encoding` modules. Fixed-width integers (`i8` … `u64`)
 are there when an algorithm needs machine arithmetic.
 
 What is left out is what can't be checked statically or run safely: `any`, `eval`, dynamic
-property access on objects, `async`, and user-defined generics. `try`/`catch` catches the errors that
-Node.js also throws; E7's own runtime checks stop the call. The [language spec](reference/SPEC.md) has the full list.
+property access on objects, union types other than with `null`, and `async`. `try`/`catch`/`finally`
+handle the errors that Node.js also throws; E7's own runtime checks stop the call. The [language spec](reference/SPEC.md) has the full list.
 
 **Try it now in the [playground](/playground)**: the real compiler and VM, compiled to
 WebAssembly, running in your browser.
