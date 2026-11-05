@@ -98,7 +98,7 @@ existing npm packages and front-end or Node.js code will not run as they are.
 4. **Test scripts.** Write assertions with `e7:test` and run them with `e7 test`.
 5. **Write E7 with AI assistants.** An [E7 skill](/docs/ai) teaches models the subset, so they produce code that
    compiles. Install it as a Claude Code plugin or upload the zip attached to each release. The site also publishes
-   [`llms.txt`](/llms.txt).
+   [`llms.txt`](https://e7lang.github.io/llms.txt).
 
 ## Where E7 is strong
 
