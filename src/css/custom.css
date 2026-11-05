@@ -111,3 +111,13 @@ html[data-theme="dark"] {
 /* blog post titles match the doc headings */
 article header h1, article header h2 { font-weight: 800; letter-spacing: -0.02em; }
 article header h1 { font-size: clamp(2rem, 3.6vw, 2.6rem); line-height: 1.15; }
+/* a little more breathing room on phones */
+@media (max-width: 996px) { .container { padding-left: 20px; padding-right: 20px; } }
+/* tip boxes use the brand accent instead of Infima's green */
+.theme-admonition-tip {
+  --ifm-alert-background-color: var(--e7-accent-soft);
+  --ifm-alert-background-color-highlight: rgba(255, 106, 43, .15);
+  --ifm-alert-foreground-color: var(--ifm-font-color-base);
+  --ifm-alert-border-color: var(--e7-accent);
+}
+.theme-admonition-tip a { color: var(--ifm-color-primary); text-decoration-color: var(--ifm-color-primary); }
