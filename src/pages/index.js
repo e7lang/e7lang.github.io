@@ -17,18 +17,24 @@ export function sign(msg: string, key: string): string {
   return hexEncode(mac);
 }`;
 
+const Icon = ({ d }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {d.map((p) => <path key={p} d={p} />)}
+  </svg>
+);
+
 const features = [
-  { icon: "⚡", bg: "rgba(16,185,129,.14)", title: "Ship without a release",
+  { icon: ["M12 15V3", "M7 8l5-5 5 5", "M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"], title: "Ship without a release",
     text: <>Compile on your build server, deliver <code>.e7b</code> bytecode over your CDN or API, and the app verifies and runs it.</> },
-  { icon: "🛡️", bg: "rgba(14,165,233,.14)", title: "Safe by construction",
+  { icon: ["M12 3l8 3v6c0 5-3.4 8.3-8 9-4.6-.7-8-4-8-9V6z", "M9 12l2 2 4-4"], title: "Safe by construction",
     text: <>A bytecode verifier keeps memory safe even for tampered input. Budgets bound instructions, memory and call depth.</> },
-  { icon: "🔑", bg: "rgba(245,158,11,.16)", title: "Secrets stay in the host",
+  { icon: ["M14.5 9.5a4 4 0 1 1-5.66 5.66 4 4 0 0 1 5.66-5.66z", "M14.5 9.5L21 3", "M18 6l2.5 2.5", "M16 8l2 2"], title: "Secrets stay in the host",
     text: <>A <code>KeyHandle</code> lets a script sign with a key from the Keychain, Keystore or DPAPI without ever reading it.</> },
-  { icon: "🧩", bg: "rgba(139,92,246,.15)", title: "TypeScript you already know",
+  { icon: ["M8 7l-5 5 5 5", "M16 7l5 5-5 5", "M13.5 4l-3 16"], title: "TypeScript you already know",
     text: <>Every E7 program is valid TypeScript. Use VS Code and <code>tsc --strict</code>; results match Node.js.</> },
-  { icon: "🔐", bg: "rgba(236,72,153,.13)", title: "Batteries for crypto",
+  { icon: ["M6 11h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1z", "M8 11V8a4 4 0 0 1 8 0v3"], title: "Batteries for crypto",
     text: <>SHA-2/3, HMAC, HKDF, PBKDF2, AES-GCM, ChaCha20-Poly1305, Ed25519, X25519, ECDSA and RSA, as native code.</> },
-  { icon: "📦", bg: "rgba(34,197,94,.14)", title: "Small and fast",
+  { icon: ["M13 2L4 14h7l-1 8 9-12h-7z"], title: "Small and fast",
     text: <>About 470 KB for the runtime, 920 KB with the on-device compiler. Faster than V8's interpreter on most workloads.</> },
 ];
 
@@ -46,10 +52,10 @@ function Hero() {
     <header className={styles.hero}>
       <div className={`container ${styles.heroInner}`}>
         <div>
-          <span className={styles.eyebrow}>● Strict TypeScript subset · Verified bytecode · No JIT</span>
+          <span className={styles.eyebrow}>Strict TypeScript subset · Verified bytecode · No JIT</span>
           <h1 className={styles.title}>
-            The TypeScript you know,<br />
-            <span className={styles.grad}>running safely inside your app.</span>
+            <span className={styles.line}>The TypeScript you know,</span>
+            <span className={`${styles.line} ${styles.accent}`}>running safely inside your app.</span>
           </h1>
           <p className={styles.lead}>
             E7 lets you ship algorithms, such as request signing and verification, as small scripts delivered from your
@@ -66,9 +72,9 @@ function Hero() {
         </div>
         <div className={styles.codeCard}>
           <div className={styles.codeBar}>
-            <i className={styles.dot} style={{ background: "#f87171" }} />
-            <i className={styles.dot} style={{ background: "#fbbf24" }} />
-            <i className={styles.dot} style={{ background: "#34d399" }} />
+            <i className={styles.dot} />
+            <i className={styles.dot} />
+            <i className={styles.dot} />
             <span className={styles.file}>sign.ts</span>
           </div>
           <CodeBlock language="ts">{heroCode}</CodeBlock>
@@ -106,7 +112,7 @@ export default function Home() {
             <div className={styles.grid3}>
               {features.map((f) => (
                 <div className={styles.card} key={f.title}>
-                  <div className={styles.icon} style={{ background: f.bg }}>{f.icon}</div>
+                  <div className={styles.icon}><Icon d={f.icon} /></div>
                   <h3>{f.title}</h3>
                   <p>{f.text}</p>
                 </div>

@@ -18,6 +18,10 @@ const config = {
     hooks: { onBrokenMarkdownLinks: "warn" },
   },
   i18n: { defaultLocale: "en", locales: ["en"] },
+  headTags: [
+    { tagName: "link", attributes: { rel: "apple-touch-icon", href: "/img/apple-touch-icon.png" } },
+    { tagName: "meta", attributes: { name: "theme-color", content: "#0e1015" } },
+  ],
   stylesheets: [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap",
   ],
@@ -41,7 +45,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: "img/architecture-light.png",
+      image: "img/social-card.png",
       colorMode: { respectPrefersColorScheme: true },
       navbar: {
         title: "E7",
