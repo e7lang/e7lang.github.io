@@ -41,8 +41,8 @@ strings, optional chaining, `??`, `for…of`, `Map`, `Set`, `Uint8Array`, `bigin
 are there when an algorithm needs machine arithmetic.
 
 What is left out is what can't be checked statically or run safely: `any`, `eval`, dynamic
-property access on objects, `try`/`catch` (scripts return error values; failures stop the
-script), `async`, and user-defined generics. The [language spec](reference/SPEC.md) has the full list.
+property access on objects, `async`, and user-defined generics. `try`/`catch` catches the errors that
+Node.js also throws; E7's own runtime checks stop the call. The [language spec](reference/SPEC.md) has the full list.
 
 **Try it now in the [playground](/playground)**: the real compiler and VM, compiled to
 WebAssembly, running in your browser.

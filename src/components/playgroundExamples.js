@@ -68,6 +68,12 @@ export default [
     "expect": 0
   },
   {
+    "id": "errors-catch",
+    "title": "try / catch",
+    "code": "// try / catch (E7 0.2): catches the errors Node.js also throws.\n// The caught value is `unknown`: narrow it with instanceof before reading .message.\n\nfunction parseAmount(text: string): number {\n  const n = Number(text);\n  if (!Number.isFinite(n)) throw new RangeError(`not a number: \"${text}\"`);\n  if (n < 0) throw new RangeError(\"amount must not be negative\");\n  return n;\n}\n\nfor (const input of [\"12.50\", \"abc\", \"-3\"]) {\n  try {\n    console.log(\"ok\", parseAmount(input));\n  } catch (e) {\n    if (e instanceof RangeError) console.log(\"rejected:\", e.message);\n    else throw e;\n  }\n}\n\n// Errors from the standard library that JavaScript also throws are catchable too\ntry {\n  const cfg = JSON.parse(\"{ broken\") as Map<string, number>;\n  console.log(cfg.size);\n} catch (e) {\n  console.log(e instanceof SyntaxError ? \"malformed JSON\" : String(e));\n}\n\n// E7's own checks are not: they stop the call, as here (JavaScript would return undefined)\nconst xs: number[] = [1, 2, 3];\ntry {\n  console.log(xs[10]);\n} catch (e) {\n  console.log(\"never printed\");\n}\n",
+    "expect": 2
+  },
+  {
     "id": "sandbox",
     "title": "Sandbox: runaway loop",
     "code": "// Scripts run in a sandbox: an instruction budget, a memory limit and a call-depth limit.\n// The playground runs with a budget of 500M instructions, so this loop is stopped safely.\nexport function main(): number {\n  let n = 0;\n  while (true) n++;\n  return n;\n}\n",

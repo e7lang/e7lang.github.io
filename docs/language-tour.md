@@ -95,11 +95,28 @@ const bad = JSON.parse('{"orderId":"A1","amount":"12.5","items":[]}') as Payment
 // JSON.parse: expected a number at $.amount
 ```
 
-## Errors are values
+## Errors
 
-E7 has no `try`/`catch`. `throw`, failed assertions and runtime errors (index out of range,
-`null` access, budget exhausted) stop the script and report a stack trace to the host. Expected
-failures are modelled as return values:
+`try`/`catch` catches the errors that Node.js also throws: your own `throw new Error(...)`,
+`JSON.parse` syntax errors, and standard-library `RangeError`s, `TypeError`s and `URIError`s.
+The caught value is `unknown`, so narrow it before reading `.message`:
+
+```ts
+function ratio(a: bigint, b: bigint): string {
+  try {
+    return (a / b).toString();
+  } catch (e) {
+    if (e instanceof RangeError) return "undefined (" + e.message + ")";
+    throw e;
+  }
+}
+console.log(ratio(10n, 3n), ratio(1n, 0n));
+```
+
+E7's own checks (index out of range, a `JSON.parse(text) as T` shape mismatch, `null` access) and
+the budget and memory limits are not catchable: JavaScript would not throw there, and catching them
+would make the program behave differently on Node.js. They stop the call and report a stack trace to
+the host. Expected failures are best modelled as return values:
 
 ```ts
 function parsePort(s: string): number | null {
@@ -146,7 +163,7 @@ bytes ever entering script memory. See the [embedding guide](reference/EMBEDDING
 
 ## What is not supported
 
-`any`, `eval`, `try`/`catch`, `async`/`await`, generators, `for…in`, user-defined generics,
+`any`, `eval`, `finally`, `async`/`await`, generators, `for…in`, user-defined generics,
 index signatures (use `Map<K, V>`), getters/setters, `#private`, and dynamic property access
 on objects. Each one is rejected at compile time with a clear message. The
 [language spec](reference/SPEC.md) has the complete list.

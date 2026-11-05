@@ -18,10 +18,12 @@ mkdirSync(out, { recursive: true });
 const pages = [
   { file: "SPEC.md", label: "Language spec", pos: 1, desc: "The E7 language: what TypeScript is accepted and how it behaves." },
   { file: "EMBEDDING.md", label: "Embedding (C API)", pos: 3, desc: "Embedding e7vm in Android, iOS, Windows, macOS and Linux apps." },
+  { file: "DEPLOYMENT.md", label: "Deployment", pos: 3, desc: "Shipping modules over the air: signing, manifests, rollout, kill switch and rollback." },
   { file: "DEBUGGING.md", label: "Debugging", pos: 4, desc: "Debugging E7 scripts: e7 debug, the C debug API and the WebAssembly protocol." },
   { file: "BYTECODE.md", label: "Bytecode format", pos: 4, desc: "The .e7b module format and the instruction set." },
   { file: "DESIGN.md", label: "Design notes", pos: 5, desc: "Why E7 and e7vm are designed the way they are." },
-  { file: "PRODUCTION.md", label: "Production checklist", pos: 6, desc: "Verification evidence: tests, fuzzing, sanitizers, reviews." },
+  { file: "PRODUCTION.md", label: "Verification record", pos: 6, desc: "Verification evidence: tests, fuzzing, sanitizers, reviews." },
+  { file: "ROADMAP.md", label: "Roadmap", pos: 7, desc: "What 0.2 contains and what comes next." },
 ];
 
 const repo = "https://github.com/e7lang/e7/blob/main/";
