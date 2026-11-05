@@ -65,6 +65,7 @@ const config = {
               { label: "Getting started", to: "/docs/getting-started" },
               { label: "Language tour", to: "/docs/language-tour" },
               { label: "Playground", to: "/playground" },
+              { label: "Using E7 with AI", to: "/docs/ai" },
             ],
           },
           {

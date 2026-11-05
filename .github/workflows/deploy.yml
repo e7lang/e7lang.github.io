@@ -53,6 +53,8 @@ jobs:
       - run: npm ci
       - name: Sync reference docs from e7
         run: node scripts/sync-docs.mjs e7
+      - name: llms.txt / llms-full.txt for AI tools
+        run: node scripts/build-llms.mjs e7
       - name: Check playground examples
         run: node scripts/check-examples.mjs
       - name: Build site

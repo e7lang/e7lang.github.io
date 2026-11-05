@@ -6,6 +6,7 @@ module.exports = {
     "getting-started",
     "language-tour",
     "host-apps",
+    "ai",
     {
       type: "category",
       label: "Reference",
