@@ -3,7 +3,7 @@ slug: what-e7-can-do
 title: "E7 today: how close it is to TypeScript, what it does well, and what it can't do yet"
 authors: [e7]
 tags: [e7, release, overview]
-description: An honest look at E7 1.0.2, the strict TypeScript subset that runs safely inside Android, iOS, Windows, macOS and Linux apps.
+description: An honest look at E7 0.1.0, the strict TypeScript subset that runs safely inside Android, iOS, Windows, macOS and Linux apps.
 ---
 
 E7 is a strict subset of TypeScript. Its virtual machine, e7vm, is small enough to embed in Android, iOS, Windows,
@@ -11,8 +11,10 @@ macOS and Linux apps. You compile scripts to bytecode on your server and ship th
 bytecode and runs it in a sandbox. Request signing, signature verification and pricing or rule logic can then change
 without an app release.
 
-With [1.0.2](https://github.com/e7lang/e7/releases/tag/v1.0.2) out, this post sums up where E7 stands: how far it is
+With [0.1.0](https://github.com/e7lang/e7/releases/tag/v0.1.0) out, this post sums up where E7 stands: how far it is
 from "real" TypeScript, what it can do today, where it is strong, and what it deliberately or not-yet cannot do.
+E7 is versioned 0.x on purpose: it is thoroughly tested and hardened, but it has not run in production yet, and a
+minor release may still change the language, the C API or the bytecode format.
 
 <!-- truncate -->
 
@@ -108,8 +110,8 @@ existing npm packages and front-end or Node.js code will not run as they are.
   - Every call has budgets for instructions (including heavy native calls), memory and call depth. An infinite loop
     is stopped, not a hang.
   - Scripts can only call the host functions you register. There is no file, network or system access.
-  - The code has had four independent security reviews, differential testing against Node.js and OpenSSL,
-    sanitizers and continuous fuzzing.
+  - The code has had four security reviews (each by a separate AI review agent; no third-party audit yet),
+    differential testing against Node.js and OpenSSL, sanitizers and continuous fuzzing.
 - **Keys stay in the host.** With a `KeyHandle`, a script can sign with a key from the Keychain, Keystore or DPAPI
   without ever reading it.
 - **App Store friendly.** e7vm is a pure interpreter with no JIT, so it runs on iOS too.

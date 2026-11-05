@@ -143,7 +143,7 @@ export default function Home() {
               <div className={styles.kicker}>Security</div>
               <h2 className={styles.h2}>Built to run code that came over the network</h2>
               <p className={styles.sub}>
-                Every layer assumes the bytecode may be hostile. Four independent security reviews, differential testing
+                Every layer assumes the bytecode may be hostile. Four security reviews by separate AI agents, differential testing
                 against Node.js and OpenSSL, sanitizers and fuzzing; every finding fixed with a regression test.
               </p>
               <Link to="/docs/reference/PRODUCTION">Read the evidence →</Link>

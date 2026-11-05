@@ -63,7 +63,7 @@ val sig = vm.call(module, "sign", "a=1&b=2", KeyHandle(1)) as String
 vm.close()
 ```
 
-Add the dependency `implementation("org.e7vm:e7vm-android:1.0.2")` (desktop JVMs: `org.e7vm:e7vm:1.0.2`, with
+Add the dependency `implementation("org.e7vm:e7vm-android:0.1.0")` (desktop JVMs: `org.e7vm:e7vm:0.1.0`, with
 JNI libraries for Linux, macOS and Windows inside). The `.aar` and `.jar` are also attached to every
 [release](https://github.com/e7lang/e7/releases/latest); see the [embedding guide](reference/EMBEDDING.md) for the repository setup.
 
@@ -80,7 +80,7 @@ vm.setBudget(10_000_000)
 if case let .string(sig) = try vm.call(module, "sign", .string("a=1&b=2"), .handle(KeyHandle(1))) { print(sig) }
 ```
 
-Add the Swift package `.package(url: "https://github.com/e7lang/e7.git", from: "1.0.2")` and depend on
+Add the Swift package `.package(url: "https://github.com/e7lang/e7.git", from: "0.1.0")` and depend on
 `.product(name: "E7VM", package: "e7")` (or build an XCFramework with `platform/ios/build_xcframework.sh`).
 e7vm uses no JIT and allocates no executable memory, which keeps it within the App Store rules for interpreted code.
 
