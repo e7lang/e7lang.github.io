@@ -3,9 +3,9 @@ const { themes } = require("prism-react-renderer");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "E7",
+  title: "e7lang",
   tagline: "The TypeScript you know, running safely inside your app",
-  favicon: "img/logo.svg",
+  favicon: "favicon.ico",
   url: "https://e7lang.github.io",
   baseUrl: "/",
   organizationName: "e7lang",
@@ -19,6 +19,8 @@ const config = {
   },
   i18n: { defaultLocale: "en", locales: ["en"] },
   headTags: [
+    { tagName: "link", attributes: { rel: "icon", type: "image/svg+xml", href: "/img/logo.svg" } },
+    { tagName: "link", attributes: { rel: "icon", type: "image/png", sizes: "32x32", href: "/img/favicon-32.png" } },
     { tagName: "link", attributes: { rel: "apple-touch-icon", href: "/img/apple-touch-icon.png" } },
     { tagName: "meta", attributes: { name: "theme-color", media: "(prefers-color-scheme: light)", content: "#ffffff" } },
     { tagName: "meta", attributes: { name: "theme-color", media: "(prefers-color-scheme: dark)", content: "#0e1015" } },
@@ -39,7 +41,7 @@ const config = {
               : `https://github.com/e7lang/e7lang.github.io/edit/main/docs/${docPath}`,
         },
         blog: {
-          blogTitle: "E7 blog",
+          blogTitle: "Blog",
           blogDescription: "News and notes from the E7 and e7vm project",
           showReadingTime: true,
           blogSidebarTitle: "Recent posts",
@@ -57,8 +59,7 @@ const config = {
       image: "img/social-card.png",
       colorMode: { respectPrefersColorScheme: true },
       navbar: {
-        title: "E7",
-        logo: { alt: "E7", src: "img/logo.svg" },
+        logo: { alt: "e7lang", src: "img/logo.svg" },
         items: [
           { type: "docSidebar", sidebarId: "docs", position: "left", label: "Docs" },
           { to: "/docs/getting-started", label: "Get started", position: "left" },
