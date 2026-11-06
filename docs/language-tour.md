@@ -222,6 +222,25 @@ async function main(): Promise<void> {
 main();
 ```
 
+Since 0.3.1, async generators (`async function*`, consumed with `for await`) and getters and
+setters in object literals work too:
+
+```ts
+async function* lines(pages: string[][]): AsyncGenerator<string, void, unknown> {
+  for (const page of pages) yield* page;          // a host call would fetch each page
+}
+const stats = {
+  count: 0,
+  bytes: 0,
+  get average(): number { return this.count === 0 ? 0 : this.bytes / this.count; },
+};
+for await (const line of lines([["a", "bcd"], ["ef"]])) {
+  stats.count++;
+  stats.bytes += line.length;
+}
+console.log(stats.average, JSON.stringify(stats));   // 2 {"count":3,"bytes":6,"average":2}
+```
+
 ## Regular expressions
 
 Regular expression literals are checked when the script is compiled, named groups are typed, and
@@ -238,6 +257,6 @@ console.log("a1b22c333".replace(/\d+/g, d => `<${d.length}>`), "x, y;z".split(/[
 ## What is not supported
 
 `any`, `unknown`, `eval`, union types other than `T | null | undefined` (and unions of literals),
-`for…in`, index signatures and `Record` (use `Map<K, V>`), async generators, timers, and dynamic
+`for…in`, index signatures and `Record` (use `Map<K, V>`), timers, and dynamic
 property access on objects. Each one is rejected at compile time with a clear message. The
 [language spec](reference/SPEC.md) has the complete list.
