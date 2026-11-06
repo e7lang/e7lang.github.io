@@ -34,17 +34,18 @@ unchanged, and differential tests check that e7vm prints exactly what Node.js pr
 
 ## What can I write?
 
-Ordinary TypeScript: `let`/`const`, functions and closures, arrow functions, classes with single
-inheritance (getters and setters, `abstract`, `#private`), interfaces, enums, generics, destructuring
-with defaults and rest, spread, template strings, optional chaining, `??`, `for…of`, `Map`, `Set`, `Uint8Array`, `bigint`, `JSON`,
+Ordinary TypeScript: `let`/`const`, functions and closures, classes with single inheritance
+(getters and setters, `abstract`, `#private`), interfaces, enums, generics, literal types,
+destructuring, spread, template strings, optional chaining, `??`, `for…of`, generators,
+`async`/`await` and promises, regular expressions, `Map`, `Set`, typed arrays, `bigint`, `JSON`,
 `Date`, `Math`, and the `e7:crypto` / `e7:encoding` modules. Fixed-width integers (`i8` … `u64`)
 are there when an algorithm needs machine arithmetic.
 
-What is left out is what can't be checked statically or run safely: `any`, `eval`, dynamic
-property access on objects, union types other than with `null`, and `async`. `try`/`catch`/`finally`
-handle the errors that Node.js also throws; E7's own runtime checks stop the call. The
-[TypeScript coverage table](reference/TYPESCRIPT.md) lists 250 TypeScript features with their status, and the
-[language spec](reference/SPEC.md) has the details.
+What is left out is what can't be checked statically or run exactly like JavaScript: `any`, `eval`,
+dynamic property access on objects, union types other than with `null` (and unions of literals),
+timers and I/O (the app does those). [What is supported](supported.md) has the summary; the
+[TypeScript coverage table](reference/TYPESCRIPT.md) lists 250 TypeScript features with their status, and
+the [language spec](reference/SPEC.md) has the details.
 
 **Try it now in the [playground](/playground)**: the real compiler and VM, compiled to
 WebAssembly, running in your browser.

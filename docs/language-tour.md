@@ -198,9 +198,46 @@ console.log(hexEncode(sha256(new TextEncoder().encode("abc"))).slice(0, 16));   
 A `KeyHandle` lets a script use a key kept in the Keychain, Keystore or DPAPI without the key
 bytes ever entering script memory. See the [embedding guide](reference/EMBEDDING.md).
 
+## Generators, `async` and literal types
+
+Since 0.3, generators, `async` / `await` and literal types work as in TypeScript. Promise callbacks
+run in the same order as in Node.js; the host app is the event loop, and its asynchronous
+operations are host functions that return promises (`declare function fetchKey(id: string):
+Promise<Uint8Array>`, see the [embedding guide](reference/EMBEDDING.md)).
+
+```ts
+type Method = "GET" | "POST";
+function* pages(total: number, size: number): Generator<[number, number]> {
+  for (let start = 0; start < total; start += size) yield [start, Math.min(start + size, total)];
+}
+async function fetchPage(method: Method, from: number, to: number): Promise<number> {
+  return (to - from) * (method === "GET" ? 1 : 2);   // a host function would do the I/O
+}
+async function main(): Promise<void> {
+  let sum = 0;
+  for (const [from, to] of pages(25, 10)) sum += await fetchPage("GET", from, to);
+  const all = await Promise.all([fetchPage("POST", 0, 1), fetchPage("GET", 0, 3)]);
+  console.log(sum, all);   // 25 [ 2, 3 ]
+}
+main();
+```
+
+## Regular expressions
+
+Regular expression literals are checked when the script is compiled, named groups are typed, and
+the engine charges every step to the instruction budget, so a catastrophic pattern ends the call
+instead of blocking the app.
+
+```ts
+const line = "2026-11-06 ERROR db: timeout after 30s";
+const m = /^(?<date>\d{4}-\d{2}-\d{2}) (?<level>[A-Z]+) (?<msg>.*)$/.exec(line);
+if (m) console.log(m.groups?.level, m.groups?.date);   // ERROR 2026-11-06
+console.log("a1b22c333".replace(/\d+/g, d => `<${d.length}>`), "x, y;z".split(/[,;]\s*/));
+```
+
 ## What is not supported
 
-`any`, `unknown`, `eval`, union types other than `T | null | undefined`, `async`/`await`,
-generators, `for…in`, regular expressions, index signatures and `Record` (use `Map<K, V>`), and
-dynamic property access on objects. Each one is rejected at compile time with a clear message. The
+`any`, `unknown`, `eval`, union types other than `T | null | undefined` (and unions of literals),
+`for…in`, index signatures and `Record` (use `Map<K, V>`), async generators, timers, and dynamic
+property access on objects. Each one is rejected at compile time with a clear message. The
 [language spec](reference/SPEC.md) has the complete list.

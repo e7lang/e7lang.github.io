@@ -5,6 +5,7 @@ module.exports = {
     "intro",
     "getting-started",
     "language-tour",
+    "supported",
     "host-apps",
     "ai",
     {
