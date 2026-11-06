@@ -13,6 +13,7 @@ module.exports = {
       collapsed: false,
       items: [
         "reference/SPEC",
+        "reference/TYPESCRIPT",
         "reference/stdlib",
         "reference/EMBEDDING",
         "reference/DEPLOYMENT",

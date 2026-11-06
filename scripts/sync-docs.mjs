@@ -17,6 +17,7 @@ mkdirSync(out, { recursive: true });
 
 const pages = [
   { file: "SPEC.md", label: "Language spec", pos: 1, desc: "The E7 language: what TypeScript is accepted and how it behaves." },
+  { file: "TYPESCRIPT.md", label: "TypeScript coverage", pos: 1, desc: "Every TypeScript feature with its status in E7, the reason and what to write instead." },
   { file: "EMBEDDING.md", label: "Embedding (C API)", pos: 3, desc: "Embedding e7vm in Android, iOS, Windows, macOS and Linux apps." },
   { file: "DEPLOYMENT.md", label: "Deployment", pos: 3, desc: "Shipping modules over the air: signing, manifests, rollout, kill switch and rollback." },
   { file: "DEBUGGING.md", label: "Debugging", pos: 4, desc: "Debugging E7 scripts: e7 debug, the C debug API and the WebAssembly protocol." },
