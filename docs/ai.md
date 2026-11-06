@@ -79,7 +79,7 @@ https://e7lang.github.io/llms-full.txt. Check every change with `e7c --check <fi
 ## Tips
 
 - Ask for tests: "write it with `e7 test` tests" gives the assistant a fast feedback loop.
-- If the E7 toolchain is not installed where the assistant runs, it can still check code with the npm package
-  (`e7-js check`) or you can paste the result into the [playground](/playground).
+- If the E7 toolchain is not installed where the assistant runs, it can still check code with the JavaScript package
+  (`e7-js check`, from the `e7lang-e7-<version>.tgz` of a [GitHub release](https://github.com/e7lang/e7/releases)) or you can paste the result into the [playground](/playground).
 - Keep the functions your app calls simple: strings, numbers, booleans, integers, `Uint8Array` and `KeyHandle`.
   Ask for JSON strings when the app needs structured results.
