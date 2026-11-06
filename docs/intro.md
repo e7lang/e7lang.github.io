@@ -42,7 +42,9 @@ are there when an algorithm needs machine arithmetic.
 
 What is left out is what can't be checked statically or run safely: `any`, `eval`, dynamic
 property access on objects, union types other than with `null`, and `async`. `try`/`catch`/`finally`
-handle the errors that Node.js also throws; E7's own runtime checks stop the call. The [language spec](reference/SPEC.md) has the full list.
+handle the errors that Node.js also throws; E7's own runtime checks stop the call. The
+[TypeScript coverage table](reference/TYPESCRIPT.md) lists 250 TypeScript features with their status, and the
+[language spec](reference/SPEC.md) has the details.
 
 **Try it now in the [playground](/playground)**: the real compiler and VM, compiled to
 WebAssembly, running in your browser.
