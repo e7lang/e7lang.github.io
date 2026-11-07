@@ -161,4 +161,4 @@ limits in mind:
 - [Bytecode format](/docs/reference/BYTECODE)
 - [Debugging](/docs/reference/DEBUGGING)
 - [Production checklist](/docs/reference/PRODUCTION)
-- [E7 today: how close it is to TypeScript](/blog/what-e7-can-do)
+- [What is supported](/docs/supported)
