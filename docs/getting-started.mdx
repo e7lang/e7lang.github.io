@@ -31,16 +31,16 @@ Download the archive for your platform from the
 | Windows x64 | `e7-<version>-windows-x64.zip` |
 
 ```bash
-tar -xzf e7-0.3.1-linux-x64.tar.gz
-export PATH="$PWD/e7-0.3.1-linux-x64/bin:$PATH"
-e7 --version        # e7 0.3.1
+tar -xzf e7-0.1.0-linux-x64.tar.gz
+export PATH="$PWD/e7-0.1.0-linux-x64/bin:$PATH"
+e7 --version        # e7 0.1.0
 ```
 
 Each archive contains `bin/e7` (run), `bin/e7c` (compile, sign, disassemble), `include/e7/e7.h`
 and static libraries in `lib/` for embedding, `types/e7.d.ts` for your editor, and examples.
 
 </TabItem>
-<TabItem value="pm" label="Homebrew / Scoop / npm">
+<TabItem value="pm" label="Homebrew / Scoop / Node.js">
 
 ```bash
 # Windows (Scoop)
@@ -50,8 +50,9 @@ scoop install https://github.com/e7lang/e7/releases/latest/download/e7.json
 #   brew tap-new --no-git local/e7 && curl -L -o "$(brew --repository local/e7)/Formula/e7.rb" \
 #     https://github.com/e7lang/e7/releases/latest/download/e7.rb && brew install local/e7/e7
 
-# Any OS with Node.js 18+: the compiler and VM as WebAssembly
-npm install -g @e7lang/e7     # provides `e7-js run|check|compile|disasm`
+# Any OS with Node.js 18+: the compiler and VM as WebAssembly (attached to each release, not on npm)
+curl -LO https://github.com/e7lang/e7/releases/download/v0.1.0/e7lang-e7-0.1.0.tgz
+npm install -g ./e7lang-e7-0.1.0.tgz     # provides `e7-js run|check|compile|disasm`
 ```
 
 </TabItem>

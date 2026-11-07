@@ -200,7 +200,7 @@ bytes ever entering script memory. See the [embedding guide](reference/EMBEDDING
 
 ## Generators, `async` and literal types
 
-Since 0.3, generators, `async` / `await` and literal types work as in TypeScript. Promise callbacks
+Generators, `async` / `await` and literal types work as in TypeScript. Promise callbacks
 run in the same order as in Node.js; the host app is the event loop, and its asynchronous
 operations are host functions that return promises (`declare function fetchKey(id: string):
 Promise<Uint8Array>`, see the [embedding guide](reference/EMBEDDING.md)).
@@ -222,8 +222,8 @@ async function main(): Promise<void> {
 main();
 ```
 
-Since 0.3.1, async generators (`async function*`, consumed with `for await`) and getters and
-setters in object literals work too:
+Async generators (`async function*`, consumed with `for await`) and getters and setters in
+object literals work too:
 
 ```ts
 async function* lines(pages: string[][]): AsyncGenerator<string, void, unknown> {
