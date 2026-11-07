@@ -21,7 +21,6 @@ module.exports = {
         "reference/DEBUGGING",
         "reference/BYTECODE",
         "reference/DESIGN",
-        "reference/DESIGN-0.3",
         "reference/PRODUCTION",
         "reference/ROADMAP",
       ],
