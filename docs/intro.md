@@ -41,9 +41,10 @@ destructuring, spread, template strings, optional chaining, `??`, `for…of`, ge
 `Date`, `Math`, and the `e7:crypto` / `e7:encoding` modules. Fixed-width integers (`i8` … `u64`)
 are there when an algorithm needs machine arithmetic.
 
-What is left out is what can't be checked statically or run exactly like JavaScript: `any`, `eval`,
-dynamic property access on objects, union types other than with `null` (and unions of literals),
-timers and I/O (the app does those). [What is supported](supported.md) has the summary; the
+What is left out is what can't be checked statically or run exactly like JavaScript, or would make
+the runtime much larger: `any`, `eval`, dynamic property access on objects, union types other than
+with `null` (and unions of literals), regular expressions (use string methods), and timers and I/O
+(the app does those). [What is supported](supported.md) has the summary; the
 [TypeScript coverage table](reference/TYPESCRIPT.md) lists 250 TypeScript features with their status, and
 the [language spec](reference/SPEC.md) has the details.
 

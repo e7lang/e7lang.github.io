@@ -7,7 +7,7 @@ description: Install the E7 skill so Claude and other AI assistants write E7 ins
 # Using E7 with AI assistants
 
 E7 looks like TypeScript, so AI assistants tend to write TypeScript that E7 rejects: `any`, regular
-expressions, union types, index signatures, async code. The **E7 skill** tells them, before they
+expressions, union types, index signatures, `Record` and `Partial`, timers. The **E7 skill** tells them, before they
 write a line:
 
 - that they are writing E7, a strict subset of TypeScript;

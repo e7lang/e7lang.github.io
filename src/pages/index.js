@@ -31,7 +31,7 @@ const features = [
   { icon: ["M14.5 9.5a4 4 0 1 1-5.66 5.66 4 4 0 0 1 5.66-5.66z", "M14.5 9.5L21 3", "M18 6l2.5 2.5", "M16 8l2 2"], title: "Secrets stay in the host",
     text: <>A <code>KeyHandle</code> lets a script sign with a key from the Keychain, Keystore or DPAPI without ever reading it.</> },
   { icon: ["M8 7l-5 5 5 5", "M16 7l5 5-5 5", "M13.5 4l-3 16"], title: "TypeScript you already know",
-    text: <>Every E7 program is valid TypeScript. Use VS Code and <code>tsc --strict</code>; results match Node.js.</> },
+    text: <>Every E7 program is valid TypeScript. Use VS Code and <code>tsc --strict</code>; results match Node.js. <a href="/docs/supported">What is supported</a>.</> },
   { icon: ["M6 11h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1z", "M8 11V8a4 4 0 0 1 8 0v3"], title: "Batteries for crypto",
     text: <>SHA-2/3, HMAC, HKDF, PBKDF2, AES-GCM, ChaCha20-Poly1305, Ed25519, X25519, ECDSA and RSA, as native code.</> },
   { icon: ["M13 2L4 14h7l-1 8 9-12h-7z"], title: "Small and fast",

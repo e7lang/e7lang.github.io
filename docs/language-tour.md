@@ -244,6 +244,7 @@ console.log(stats.average, JSON.stringify(stats));   // 2 {"count":3,"bytes":6,"
 ## What is not supported
 
 `any`, `unknown`, `eval`, union types other than `T | null | undefined` (and unions of literals),
-`for…in`, index signatures and `Record` (use `Map<K, V>`), regular expressions (use string
-methods such as `indexOf`, `split` and `replaceAll`), timers, and dynamic property access on objects. Each one is rejected at compile time with a clear message. The
-[language spec](reference/SPEC.md) has the complete list.
+`for…in`, index signatures and `Record` (use `Map<K, V>`), regular expressions (use string methods
+such as `indexOf`, `split` and `replaceAll`), timers, and dynamic property access on objects. Each
+one is rejected at compile time with a clear message. [What is supported](supported.md) lists them
+all with what to write instead.
