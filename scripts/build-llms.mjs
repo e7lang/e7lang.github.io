@@ -41,7 +41,7 @@ const index = `# E7
 > E7 is a strict subset of TypeScript compiled to verified bytecode and run by e7vm, a small embeddable VM
 > (C API; Kotlin/Java, Swift, C#, JavaScript/WebAssembly bindings) inside Android, iOS, Windows, macOS and
 > Linux apps — typically for server-delivered algorithms such as request signing and signature verification.
-> E7 looks like TypeScript but rejects many TypeScript features (any, try/catch, user generics, regex, async,
+> E7 looks like TypeScript but rejects many TypeScript features (any, unknown, eval, regular expressions,
 > union types other than with null/undefined, index signatures); read "Writing E7" before generating code.
 
 ## Writing E7 (start here when generating code)

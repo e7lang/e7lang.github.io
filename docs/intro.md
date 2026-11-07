@@ -25,7 +25,7 @@ server compiles and your app downloads and runs, without a new app release.
 | Input to the app | Compact bytecode, **verified** before it runs | Source text |
 | Untrusted code | Verifier + instruction budget + memory limit + call-depth limit | Depends on the engine |
 | Secrets | `KeyHandle`: a script can sign with a key it can never read | Key bytes in script memory |
-| Size | About 470 KB with crypto (920 KB with the on-device compiler) | Several MB |
+| Size | About 1.2 MB with crypto, 460 KB compressed (2.7 MB with the on-device compiler) | Several MB |
 | JIT | None; pure interpreter, App Store safe | Usually disabled on iOS anyway |
 | Crypto | SHA-2/3, HMAC, HKDF, PBKDF2, AES-GCM, ChaCha20-Poly1305, Ed25519, X25519, ECDSA, RSA (native) | Bring your own |
 
@@ -37,7 +37,7 @@ unchanged, and differential tests check that e7vm prints exactly what Node.js pr
 Ordinary TypeScript: `let`/`const`, functions and closures, classes with single inheritance
 (getters and setters, `abstract`, `#private`), interfaces, enums, generics, literal types,
 destructuring, spread, template strings, optional chaining, `??`, `for…of`, generators,
-`async`/`await` and promises, regular expressions, `Map`, `Set`, typed arrays, `bigint`, `JSON`,
+`async`/`await` and promises, `Map`, `Set`, typed arrays, `bigint`, `JSON`,
 `Date`, `Math`, and the `e7:crypto` / `e7:encoding` modules. Fixed-width integers (`i8` … `u64`)
 are there when an algorithm needs machine arithmetic.
 

@@ -10,7 +10,7 @@ E7 is a strict subset of TypeScript: every E7 program is valid TypeScript and be
 Node.js. What E7 accepts, it runs exactly like JavaScript; what it cannot run exactly like JavaScript,
 or cannot check before the script runs, is a compile error with a hint. This page is the summary; the
 [TypeScript coverage table](reference/TYPESCRIPT.md) lists all 250 TypeScript features with their status, the
-reason and what to write instead (155 supported, 17 partly, 78 not).
+reason and what to write instead (154 supported, 16 partly, 80 not).
 
 ## Supported
 
@@ -23,7 +23,6 @@ reason and what to write instead (155 supported, 17 partly, 78 not).
 | Syntax | spread, optional chaining, `??`, `??=` / `\|\|=` / `&&=`, template literals and tagged templates, computed keys known at compile time, labels, `try` / `catch` / `finally` |
 | Iteration | `for...of`, **generators** (`function*`, `yield*`, `[Symbol.iterator]`), spread and destructuring of iterables; **async generators** (`async function*`, `[Symbol.asyncIterator]`) |
 | Async | **`async` / `await`**, `Promise` (`then` / `catch` / `finally`, `all`, `allSettled`, `any`, `race`, `new Promise`), top-level `await`, `for await` over arrays, async generators and async iterable classes; callbacks run in the order of Node.js |
-| Regular expressions | **literals and `RegExp`** (flags `dgimsuy`, named groups, lookbehind, `\p{...}`), `exec`, `test`, `match`, `matchAll`, `replace` / `replaceAll` with patterns and callbacks, `split`, `search` |
 | Library | `Array` (including `toSorted` / `toReversed` / `toSpliced` / `with`), `String`, `Math`, `Number`, `Map`, `Set`, `Date` (UTC), `JSON` (`JSON.parse(text) as T` is validated), `Error` with `cause`, `AggregateError`, `BigInt`, `Uint8Array` and the other typed arrays, `ArrayBuffer`, `DataView`, `TextEncoder` / `TextDecoder`, `structuredClone` |
 | Modules | ES modules: named and default exports, namespace imports, re-exports, `import type`; built-in `e7:crypto`, `e7:encoding`, `e7:json`, `e7:test` |
 | E7 extras | machine integers `i8` … `u64`, key handles for keys the app keeps, instruction budgets and memory limits, signed bytecode |
@@ -38,6 +37,7 @@ reason and what to write instead (155 supported, 17 partly, 78 not).
 | `Symbol` values, `Proxy`, `Reflect`, `eval`, `for...in`, `delete`, `in` | property names are fixed when compiling | `Object.keys`, a `Map` |
 | `var`, class expressions, mixins, decorators, namespaces, JSX, non-ASCII identifiers | not needed by E7's scripts | `let` / `const`, classes, ES modules |
 | timers and I/O (`setTimeout`, `fetch`, `fs`) | the app is the event loop and owns all I/O | an async host function (`declare function f(): Promise<T>`) or data passed in |
+| regular expressions (`/.../`, `RegExp`, `match`, `matchAll`, `search`) | an engine and its Unicode tables would add about 160 KB to every app | `indexOf`, `includes`, `startsWith`, `endsWith`, `split`, `replaceAll` |
 | `Intl`, locale formatting, `normalize`, `WeakMap` / `WeakSet` | locale and Unicode data differ between platforms; no weak references in the collector | ISO formats, `Map` |
 | an object literal with `get x()` passed where an interface declares the property `x: T` | e7 reads interface properties as fields | declare the accessor in the interface: `get x(): T` |
 

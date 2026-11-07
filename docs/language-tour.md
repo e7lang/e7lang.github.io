@@ -241,22 +241,9 @@ for await (const line of lines([["a", "bcd"], ["ef"]])) {
 console.log(stats.average, JSON.stringify(stats));   // 2 {"count":3,"bytes":6,"average":2}
 ```
 
-## Regular expressions
-
-Regular expression literals are checked when the script is compiled, named groups are typed, and
-the engine charges every step to the instruction budget, so a catastrophic pattern ends the call
-instead of blocking the app.
-
-```ts
-const line = "2026-11-06 ERROR db: timeout after 30s";
-const m = /^(?<date>\d{4}-\d{2}-\d{2}) (?<level>[A-Z]+) (?<msg>.*)$/.exec(line);
-if (m) console.log(m.groups?.level, m.groups?.date);   // ERROR 2026-11-06
-console.log("a1b22c333".replace(/\d+/g, d => `<${d.length}>`), "x, y;z".split(/[,;]\s*/));
-```
-
 ## What is not supported
 
 `any`, `unknown`, `eval`, union types other than `T | null | undefined` (and unions of literals),
-`for…in`, index signatures and `Record` (use `Map<K, V>`), timers, and dynamic
-property access on objects. Each one is rejected at compile time with a clear message. The
+`for…in`, index signatures and `Record` (use `Map<K, V>`), regular expressions (use string
+methods such as `indexOf`, `split` and `replaceAll`), timers, and dynamic property access on objects. Each one is rejected at compile time with a clear message. The
 [language spec](reference/SPEC.md) has the complete list.

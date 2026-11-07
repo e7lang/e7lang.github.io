@@ -35,7 +35,7 @@ const features = [
   { icon: ["M6 11h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1z", "M8 11V8a4 4 0 0 1 8 0v3"], title: "Batteries for crypto",
     text: <>SHA-2/3, HMAC, HKDF, PBKDF2, AES-GCM, ChaCha20-Poly1305, Ed25519, X25519, ECDSA and RSA, as native code.</> },
   { icon: ["M13 2L4 14h7l-1 8 9-12h-7z"], title: "Small and fast",
-    text: <>About 470 KB for the runtime, 920 KB with the on-device compiler. Faster than V8's interpreter on most workloads.</> },
+    text: <>About 1.2 MB for the runtime (460 KB compressed), 2.7 MB with the on-device compiler. Faster than V8's interpreter on most workloads.</> },
 ];
 
 const perf = [
@@ -94,7 +94,7 @@ export default function Home() {
       <main>
         <div className="container">
           <div className={styles.stats}>
-            <div className={styles.stat}><b>~470 KB</b><span>runtime library, crypto included</span></div>
+            <div className={styles.stat}><b>~1.2 MB</b><span>runtime library, crypto included</span></div>
             <div className={styles.stat}><b>0 JIT</b><span>pure interpreter, App Store safe</span></div>
             <div className={styles.stat}><b>Portable</b><span>one .e7b runs on every platform</span></div>
             <div className={styles.stat}><b>Fast</b><span>beats V8's interpreter, native crypto</span></div>
