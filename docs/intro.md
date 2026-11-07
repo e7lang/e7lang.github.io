@@ -25,9 +25,9 @@ server compiles and your app downloads and runs, without a new app release.
 | Input to the app | Compact bytecode, **verified** before it runs | Source text |
 | Untrusted code | Verifier + instruction budget + memory limit + call-depth limit | Depends on the engine |
 | Secrets | `KeyHandle`: a script can sign with a key it can never read | Key bytes in script memory |
-| Size | About 1.2 MB with crypto, 460 KB compressed (2.7 MB with the on-device compiler) | Several MB |
+| Size | About 1.1 MB with crypto, 430 KB compressed (2.6 MB with the on-device compiler) | Several MB |
 | JIT | None; pure interpreter, App Store safe | Usually disabled on iOS anyway |
-| Crypto | SHA-2/3, HMAC, HKDF, PBKDF2, AES-GCM, ChaCha20-Poly1305, Ed25519, X25519, ECDSA, RSA (native) | Bring your own |
+| Crypto | Modern algorithms, native: SHA-2, HMAC, HKDF, PBKDF2, AES-GCM, ChaCha20-Poly1305, Ed25519, X25519 | Bring your own |
 
 Every E7 program is also valid TypeScript: VS Code, `tsc --strict` and Node.js run it
 unchanged, and differential tests check that e7vm prints exactly what Node.js prints.

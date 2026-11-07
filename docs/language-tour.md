@@ -190,10 +190,13 @@ export function checkLicense(publicKey: Uint8Array, token: string): boolean {
 console.log(hexEncode(sha256(new TextEncoder().encode("abc"))).slice(0, 16));   // ba7816bf8f01cfea
 ```
 
-- Hashes: SHA-1, SHA-2, SHA-3, MD5; HMAC, HKDF, PBKDF2
-- Ciphers: AES-GCM / CBC / CTR, ChaCha20-Poly1305
-- Signatures and key agreement: Ed25519, X25519, ECDSA P-256/384/521, RSA PKCS#1 v1.5 and PSS
-- Encodings: hex, base64, base64url, base32, UTF-8, PEM
+- Hashes: SHA-256, SHA-384, SHA-512; HMAC, HKDF, PBKDF2
+- Authenticated encryption: AES-GCM, ChaCha20-Poly1305
+- Signatures and key agreement: Ed25519, X25519
+- Encodings (`e7:encoding`): hex, base64, base64url, base32, UTF-8, PEM, CRC-32
+
+Only modern algorithms are built in. There is no MD5, SHA-1, SHA-3, AES-CBC / CTR, RSA or ECDSA; an app that
+must speak a legacy protocol registers a host function for it.
 
 A `KeyHandle` lets a script use a key kept in the Keychain, Keystore or DPAPI without the key
 bytes ever entering script memory. See the [embedding guide](reference/EMBEDDING.md).

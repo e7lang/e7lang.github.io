@@ -93,7 +93,7 @@ second copy, which checks breakpoints and stepping, only while a debugger is att
 
 ### The sandbox
 
-- **Budgets:** an instruction budget (heavy native calls such as BigInt arithmetic and RSA count by the work they do),
+- **Budgets:** an instruction budget (heavy native calls such as BigInt arithmetic and PBKDF2 count by the work they do),
   a memory limit and a call-depth limit.
 - **Explicit capabilities:** a script can only call the native functions the host registers. There is no file,
   network or system access.
@@ -104,12 +104,12 @@ second copy, which checks breakpoints and stepping, only while a debugger is att
 
 | Library | Version and license | Used for |
 |---|---|---|
-| [BearSSL](https://bearssl.org/) | 0.6, MIT; only the primitives (no TLS, no X.509) | MD5, SHA-1/2, HMAC, HKDF, PBKDF2, AES-GCM/CBC/CTR, ChaCha20-Poly1305, ECDSA P-256/384/521, RSA, and the random number generator |
+| [BearSSL](https://bearssl.org/) | 0.6, MIT; only the primitives (no TLS, no X.509) | SHA-256/384/512, HMAC, AES-GCM, ChaCha20-Poly1305, and the random number generator |
 | [Monocypher](https://monocypher.org/) | 4.0.3, CC0 or BSD-2 | X25519 and the Ed25519 core (paired with SHA-512) |
 
 Everything else is part of E7:
 
-- SHA-3 and Keccak-256 (`src/crypto/keccak.cpp`).
+- HKDF and PBKDF2 on top of BearSSL's HMAC.
 - The whole standard library: strings, JSON, BigInt, Date, Map and the rest.
 
 The runtime touches the operating system in only two places:

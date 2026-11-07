@@ -24,7 +24,7 @@ reason and what to write instead (154 supported, 16 partly, 80 not).
 | Iteration | `for...of`, **generators** (`function*`, `yield*`, `[Symbol.iterator]`), spread and destructuring of iterables; **async generators** (`async function*`, `[Symbol.asyncIterator]`) |
 | Async | **`async` / `await`**, `Promise` (`then` / `catch` / `finally`, `all`, `allSettled`, `any`, `race`, `new Promise`), top-level `await`, `for await` over arrays, async generators and async iterable classes; callbacks run in the order of Node.js |
 | Library | `Array` (including `toSorted` / `toReversed` / `toSpliced` / `with`), `String`, `Math`, `Number`, `Map`, `Set`, `Date` (UTC), `JSON` (`JSON.parse(text) as T` is validated), `Error` with `cause`, `AggregateError`, `BigInt`, `Uint8Array` and the other typed arrays, `ArrayBuffer`, `DataView`, `TextEncoder` / `TextDecoder`, `structuredClone` |
-| Modules | ES modules: named and default exports, namespace imports, re-exports, `import type`; built-in `e7:crypto`, `e7:encoding`, `e7:json`, `e7:test` |
+| Modules | ES modules: named and default exports, namespace imports, re-exports, `import type`; built-in `e7:crypto` (modern algorithms only), `e7:encoding`, `e7:json`, `e7:test` |
 | E7 extras | machine integers `i8` … `u64`, key handles for keys the app keeps, instruction budgets and memory limits, signed bytecode |
 
 ## Not supported
@@ -46,6 +46,7 @@ Each of these is a compile error that names the feature and suggests what to wri
 | `var`, decorators, namespaces, `declare global`, `declare module`, `declare const` / `declare class`, JSX, non-ASCII identifiers | not needed by E7's scripts, or need run-time metadata | `let` / `const`, ES modules, host functions (`declare function`) |
 | dynamic `import()`, `import.meta`, circular imports | the host loads modules; a module is verified as a whole | static imports; move shared declarations into a third module |
 | regular expressions (`/.../`, `RegExp`, `match`, `matchAll`, `search`) | an engine and its Unicode tables would add about 160 KB to every app | `indexOf`, `includes`, `startsWith`, `endsWith`, `split`, `replaceAll`, `trim` |
+| legacy crypto: MD5, SHA-1, SHA-3 / Keccak, AES-CBC / CTR, RSA, ECDSA | `e7:crypto` ships only modern algorithms: less code to audit, fuzz and keep constant-time | SHA-256/384/512, AES-GCM or ChaCha20-Poly1305, Ed25519 / X25519; for a legacy protocol, a host function backed by the platform's crypto library |
 | timers and I/O (`setTimeout`, `setInterval`, `queueMicrotask`, `fetch`, `fs`) | the app is the event loop and owns all I/O | an async host function (`declare function f(): Promise<T>`) or data passed in |
 | `Intl`, `toLocaleString`, `normalize`, locale-aware `localeCompare` | locale and Unicode data differ between platforms | ISO formats, `toFixed`, `padStart` |
 | `WeakMap`, `WeakSet`, `WeakRef`, `FinalizationRegistry`, `SharedArrayBuffer`, `Atomics` | no weak references in the collector; no threads in a script | `Map` / `Set` with explicit removal, `ArrayBuffer` |
