@@ -24,7 +24,7 @@ const pages = [
   { file: "BYTECODE.md", label: "Bytecode format", pos: 4, desc: "The .e7b module format and the instruction set." },
   { file: "DESIGN.md", label: "Design notes", pos: 5, desc: "Why E7 and e7vm are designed the way they are." },
   { file: "PRODUCTION.md", label: "Verification record", pos: 6, desc: "Verification evidence: tests, fuzzing, sanitizers, reviews." },
-  { file: "ROADMAP.md", label: "Roadmap", pos: 7, desc: "What 0.1.0 contains and what comes next." },
+  { file: "ROADMAP.md", label: "Roadmap", pos: 7, desc: "What 0.1.x contains and what comes next." },
 ];
 
 const repo = "https://github.com/e7lang/e7/blob/main/";
